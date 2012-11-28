@@ -1,3 +1,10 @@
+2012-11-29  tasogare66 <tasogare66@gmail.com>
+
+	* unity-adbanner-example:
+	GoogleAdMobAdsSdk-6.2.1.jar にして buildし直し
+	layoutを BOTTOM|CENTERに変更
+
+
 ### 概要
 
 Unity 3.5 より追加された ADBannerView クラスは、今のところ iAd にしか対応していません。 Android では依然として外部プラグインを使用する必要があります。このプロジェクトは外部プラグインを使用して iOS と Android の両方でバナー広告を表示する仕組みの実装例を提示するものです。

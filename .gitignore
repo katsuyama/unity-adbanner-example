@@ -7,3 +7,4 @@ AndroidPlugin/proguard-project.txt
 AndroidPlugin/local.properties
 Sample/Library
 Sample/Temp
+Sample/*.apk

@@ -20,7 +20,7 @@ public class AdBannerController {
                     // Make a layout for ad banner.
                     RelativeLayout layout = new RelativeLayout(activity);
                     activity.addContentView(layout, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-                    layout.setGravity(Gravity.BOTTOM);
+                    layout.setGravity(Gravity.BOTTOM|Gravity.CENTER);
                     // Make a banner.
                     adBanner = new AdView(activity, AdSize.BANNER, publisher);
                     adBanner.setId(bannerViewId);
