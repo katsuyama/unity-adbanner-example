@@ -1,6 +1,11 @@
+2013-02-05  tasogare66 <tasogare66@gmail.com>
+
+	* unity-adbanner-example:[Android]
+	mediationの動作テスト、i-mobile Admobの広告を切り替えて表示
+
 2012-11-29  tasogare66 <tasogare66@gmail.com>
 
-	* unity-adbanner-example:
+	* unity-adbanner-example:[Android]
 	GoogleAdMobAdsSdk-6.2.1.jar にして buildし直し
 	layoutを BOTTOM|CENTERに変更
 
