@@ -11,7 +11,7 @@ import android.widget.RelativeLayout.LayoutParams;
 public class AdBannerController {
     static final int bannerViewId = 0x661ad306; // "ggl admob"
     
-    static public void tryCreateBanner(final Activity activity, final String publisher, final String testDevice) {
+    static public void tryCreateBanner(final Activity activity, final String publisher, final String testDevice, final int layoutGravity) {
         activity.runOnUiThread(new Runnable() {
             public void run() {
                 AdView adBanner = (AdView)activity.findViewById(bannerViewId);
@@ -20,7 +20,8 @@ public class AdBannerController {
                     // Make a layout for ad banner.
                     RelativeLayout layout = new RelativeLayout(activity);
                     activity.addContentView(layout, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-                    layout.setGravity(Gravity.BOTTOM|Gravity.CENTER);
+                    //layout.setGravity(Gravity.BOTTOM|Gravity.CENTER);
+                    layout.setGravity(layoutGravity);
                     // Make a banner.
                     adBanner = new AdView(activity, AdSize.BANNER, publisher);
                     adBanner.setId(bannerViewId);

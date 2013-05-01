@@ -1,3 +1,9 @@
+2013-05-02  tasogare66 <tasogare66@gmail.com>
+
+	* unity-adbanner-example:[Android]
+	GoogleAdMobAdsSdk-6.4.1.jar に更新
+	layoutの指定をunityから設定できるように
+
 2013-02-05  tasogare66 <tasogare66@gmail.com>
 
 	* unity-adbanner-example:[Android]
