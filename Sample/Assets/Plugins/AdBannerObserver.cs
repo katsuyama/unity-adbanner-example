@@ -36,11 +36,21 @@ public class AdBannerObserver : MonoBehaviour {
         }
     }
     
+	public static void Destruct() {
+		Destroy(sInstance.gameObject);
+	}
+
     public string mAdMobPublisherId;
     public string mAdMobTestDeviceId;
     public float mRefreshTime;
 	public int mLayoutGravity;
     
+#if UNITY_ANDROID && !UNITY_EDITOR
+	AndroidJavaClass plugin;
+	AndroidJavaClass unityPlayer;
+	AndroidJavaObject activity;
+#endif
+
     IEnumerator Start () {
 #if UNITY_IPHONE
         ADBannerView banner = new ADBannerView();
@@ -58,9 +68,9 @@ public class AdBannerObserver : MonoBehaviour {
             yield return null;
         }
 #elif UNITY_ANDROID && !UNITY_EDITOR
-        AndroidJavaClass plugin = new AndroidJavaClass("jp.radiumsoftware.unityplugin.admob.AdBannerController");
-        AndroidJavaClass unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-        AndroidJavaObject activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
+        plugin = new AndroidJavaClass("jp.radiumsoftware.unityplugin.admob.AdBannerController");
+        unityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+        activity = unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
         while (true) {
             plugin.CallStatic("tryCreateBanner", activity, mAdMobPublisherId, mAdMobTestDeviceId, mLayoutGravity);
             yield return new WaitForSeconds(Mathf.Max(30.0f, mRefreshTime));
@@ -69,4 +79,12 @@ public class AdBannerObserver : MonoBehaviour {
         return null;
 #endif
     }
+
+	void OnDestroy() {
+#if UNITY_ANDROID && !UNITY_EDITOR
+		activity.Dispose();
+		unityPlayer.Dispose();
+		plugin.Dispose();
+#endif
+	}
 }
